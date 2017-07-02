@@ -1,23 +1,22 @@
-/**Problem: 1393 - Cruel Mathematics Teacher I
-*  Judge: Caribbean Online Judge
+/**Problem: 
+*  Judge: 
+*  Url: 
 *  Auth: Iván Romero Gárcia
-*  Solution: Utilizar BigInteger y mediante u ciclo ir imprimiendo des 
-*  70 en 70 los digitos del numero
+*  Solution: 
 **/
-package number.theory;
+package adhoc;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.math.BigInteger;
 
 /**
  *
  * @author rous
  */
-public class Main1393 {
+public class Main1177 {
 
     /**
      * @param args the command line arguments
@@ -28,18 +27,19 @@ public class Main1393 {
         BufferedReader br = new BufferedReader(isr);
         OutputStreamWriter osw = new OutputStreamWriter(System.out);
         BufferedWriter bw = new BufferedWriter(osw);
-        BigInteger n;
-        String [] line = br.readLine().split("\\s+");
-        n= new BigInteger(line[0]);
-        String power = n.pow(Integer.parseInt(line[1])).toString();
-        while (power.length()>70) {            
-            bw.append(power.substring(0,70));
+        StringBuilder auxSB;
+        String line[];
+        int g;
+        while (true) {            
+            line = br.readLine().split(" ");
+            if(line[0].equals("0"))break;
+            g = line[1].length()/Integer.parseInt(line[0]);
+            for (int i = 0; i < line[1].length(); i+=g) {
+                auxSB = new StringBuilder(line[1].substring(i,i+g));
+                bw.write(auxSB.reverse().toString());
+            }
             bw.newLine();
-            power = power.substring(70);
         }
-        bw.append(power);
-        bw.newLine();
-        bw.write("");
         bw.flush();
         bw.close();
     }

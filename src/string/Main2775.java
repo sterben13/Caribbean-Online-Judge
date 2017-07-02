@@ -1,26 +1,25 @@
-/**Problem: 1393 - Cruel Mathematics Teacher I
-*  Judge: Caribbean Online Judge
-*  Auth: Iván Romero Gárcia
-*  Solution: Utilizar BigInteger y mediante u ciclo ir imprimiendo des 
-*  70 en 70 los digitos del numero
-**/
-package number.theory;
+/**Problem: 
+ *  Judge: Caribbean Online Judge
+ *  Auth: Iván Romero Gárcia
+ *  Solution: 
+ * */
+package string;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.math.BigInteger;
 
 /**
  *
  * @author rous
  */
-public class Main1393 {
+public class Main2775 {
 
     /**
      * @param args the command line arguments
+     * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
@@ -28,18 +27,21 @@ public class Main1393 {
         BufferedReader br = new BufferedReader(isr);
         OutputStreamWriter osw = new OutputStreamWriter(System.out);
         BufferedWriter bw = new BufferedWriter(osw);
-        BigInteger n;
-        String [] line = br.readLine().split("\\s+");
-        n= new BigInteger(line[0]);
-        String power = n.pow(Integer.parseInt(line[1])).toString();
-        while (power.length()>70) {            
-            bw.append(power.substring(0,70));
+        StringBuilder sb;
+        int t = Integer.parseInt(br.readLine());
+        String regex = "[aeiou][a-z]*";
+        for (int i = 0; i < t; i++) {
+            sb = new StringBuilder(br.readLine());
+            if(sb.toString().matches(regex)){               
+                sb.append("cow");
+            }else{
+                sb.append(sb.charAt(0))
+                        .append("ow")
+                        .deleteCharAt(0);
+            }
+            bw.write(sb.toString());
             bw.newLine();
-            power = power.substring(70);
         }
-        bw.append(power);
-        bw.newLine();
-        bw.write("");
         bw.flush();
         bw.close();
     }
